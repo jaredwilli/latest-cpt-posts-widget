@@ -70,7 +70,7 @@ function n2wp_latest_cpt_init() {
 				'pshow' => '5' 
 			);
 			// form posted?
-			if ( $_POST['latest-cpt-submit'] ) {
+			if ( isset( $_POST['latest-cpt-submit'] ) ) {
 				$options['title'] = strip_tags( $_POST['latest-cpt-title'] );
 				$options['phead'] = $_POST['latest-cpt-phead'];
 				$options['ptype'] = $_POST['latest-cpt-ptype'];
