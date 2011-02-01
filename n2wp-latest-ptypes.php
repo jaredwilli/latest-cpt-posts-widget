@@ -58,7 +58,7 @@ function n2wp_latest_cpt_init() {
 				$label = $post_type->labels->name;
 			}
 			if ( ! empty( $url ) ) {
-				print '<p class="latest_cpt_icon"><a href="' . esc_url( $url ) . '" rel="bookmark">' . sprintf( esc_html__( 'View all %1$s' ), $label ) . ' &rarr;</a></p>';
+				print '<p class="latest_cpt_icon"><a href="' . esc_url( $url ) . '" rel="bookmark">' . sprintf( esc_html__( 'View all %1$s &rarr;' ), $label ) . '</a></p>';
 			}
 		}
 		
