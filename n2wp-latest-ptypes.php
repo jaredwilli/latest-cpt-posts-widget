@@ -44,12 +44,24 @@ function n2wp_latest_cpt_init() {
 			
 			<?php endif; ?>
 			
-			<!-- NEEDS FIX: to display link to full list of posts page 
-			<?php $obj = get_post_type_object($ptype); ?>
-			<div class="latest_cpt_icon"><a href="<?php site_url('/'.$obj->query_var); ?>" rel="bookmark"><?php _e( 'View all ' . $obj->labels->name . ' posts' ); ?>&rarr;</a></div>
-			//-->
 			
 		<?php
+		/* Print link to custom post_type archive page if one exists. */
+		if ( function_exists( 'get_post_type_archive_link' ) ) {
+			$url = '';
+			$label = __( 'entries' );
+			$post_type = get_post_type_object( $ptype );
+			if ( isset( $post_type->name ) ) {
+				$url = get_post_type_archive_link( $post_type->name );
+			}
+			if ( isset( $post_type->labels->name ) ) {
+				$label = $post_type->labels->name;
+			}
+			if ( ! empty( $url ) ) {
+				print '<p class="latest_cpt_icon"><a href="' . esc_url( $url ) . '" rel="bookmark">' . sprintf( esc_html( 'View all %1$s' ), $label ) . ' &rarr;</a></p>';
+			}
+		}
+		
 		// echo widget closing tag
 		echo $after_widget;
 	}
