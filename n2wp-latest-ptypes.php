@@ -118,7 +118,7 @@ function n2wp_latest_cpt_init() {
 				<option value=""> - <?php echo __( 'Select Post Type' ); ?> - </option>
 				<?php $args = array( 'public' => true );
 				$post_types = get_post_types( $args, 'names' );
-				foreach ($post_types as $post_type ) { ?>
+				foreach ( (array) $post_types as $post_type ) { ?>
 					<option value="<?php echo $post_type; ?>" <?php if( $options['ptype'] == $post_type) { echo 'selected="selected"'; } ?>><?php echo $post_type;?></option>
 				<?php }	?>
 			</select>
